@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  inventory-service:
+    container_name: e-commerce_inventory-service
+    build:
+      context: ./inventory-service
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
