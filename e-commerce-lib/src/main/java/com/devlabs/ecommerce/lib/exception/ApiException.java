@@ -8,15 +8,10 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 public abstract class ApiException extends RuntimeException {
 	
-	private final String devMessage;
 	
-	public ApiException(final String userMessage, final String devMessage) {
-		
-		super(userMessage);
-		this.devMessage = devMessage;
+	public ApiException(final String message) {
+		super(message);
 	}
 	
-	public void debugLog(){
-		log.error(devMessage);
-	}
+	abstract ApiError toApiError();
 }
