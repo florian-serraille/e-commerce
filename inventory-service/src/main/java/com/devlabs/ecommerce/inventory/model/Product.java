@@ -8,8 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -23,10 +22,10 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	private Long id;
-	@NotNull
+	@NotBlank
 	private String name;
 	@NotNull
-	@Positive
+	@PositiveOrZero
 	@JsonFormat(shape= JsonFormat.Shape.STRING)
 	private BigDecimal price;
 }

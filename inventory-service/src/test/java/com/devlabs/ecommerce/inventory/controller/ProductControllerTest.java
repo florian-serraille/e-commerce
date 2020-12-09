@@ -7,6 +7,7 @@ import com.devlabs.ecommerce.lib.exception.ResourceNotFoundException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.mockito.verification.VerificationMode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -109,5 +110,22 @@ class ProductControllerTest {
 		       .andExpect(jsonPath("$.id", notNullValue()))
 		       .andExpect(jsonPath("$.name", is(expectedProduct.getName())))
 		       .andExpect(jsonPath("$.price", equalTo(expectedProduct.getPrice().toString())));
+	}
+	
+	@Test
+	void saveProductWithConstraintsViolation() throws Exception {
+		
+		// Given
+		final ObjectMapper mapper = new ObjectMapper();
+		final Product expectedProduct = ProductCatalog.getProductWithConstraintViolation();
+		
+		// When
+		final ResultActions actions = mockMvc.perform(post("/api/v1/products")
+				                                              .contentType(MediaType.APPLICATION_JSON_VALUE)
+				                                              .content(mapper.writeValueAsString(expectedProduct)));
+		
+		// Then
+		actions.andExpect(status().isBadRequest());
+		Mockito.verifyNoInteractions(productService);
 	}
 }

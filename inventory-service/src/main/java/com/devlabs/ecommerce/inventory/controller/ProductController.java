@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
@@ -29,7 +30,7 @@ public class ProductController {
 	}
 	
 	@PostMapping(consumes = APPLICATION_JSON_VALUE)
-	public ResponseEntity<Product> saveProduct(@RequestBody Product product) {
+	public ResponseEntity<Product> saveProduct(@Valid @RequestBody Product product) {
 		return ResponseEntity.ok(productService.save(product));
 	}
 }

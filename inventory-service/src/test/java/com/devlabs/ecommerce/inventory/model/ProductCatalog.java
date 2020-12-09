@@ -26,4 +26,8 @@ public class ProductCatalog {
 	public static Product getProductWithoutId() {
 		return new Product(null, "Pen", BigDecimal.valueOf(1));
 	}
+	
+	public static Product getProductWithConstraintViolation() {
+		return new Product(null, "", BigDecimal.valueOf(-1));
+	}
 }
