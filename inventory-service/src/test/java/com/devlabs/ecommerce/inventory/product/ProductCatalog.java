@@ -1,5 +1,6 @@
-package com.devlabs.ecommerce.inventory.model;
+package com.devlabs.ecommerce.inventory.product;
 
+import com.devlabs.ecommerce.inventory.product.Product;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 

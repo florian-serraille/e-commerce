@@ -1,4 +1,4 @@
-package com.devlabs.ecommerce.inventory.model;
+package com.devlabs.ecommerce.inventory.product;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
@@ -17,7 +17,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Product {
+class Product {
 	
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
