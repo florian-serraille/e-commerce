@@ -1,5 +1,6 @@
-package com.devlabs.ecommerce.inventory.model;
+package com.devlabs.ecommerce.inventory.product;
 
+import com.devlabs.ecommerce.inventory.product.Product;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -25,5 +26,9 @@ public class ProductCatalog {
 	
 	public static Product getProductWithoutId() {
 		return new Product(null, "Pen", BigDecimal.valueOf(1));
+	}
+	
+	public static Product getProductWithConstraintViolation() {
+		return new Product(null, "", BigDecimal.valueOf(-1));
 	}
 }

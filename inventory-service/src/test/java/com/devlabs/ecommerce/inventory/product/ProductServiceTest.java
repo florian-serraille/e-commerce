@@ -1,8 +1,5 @@
-package com.devlabs.ecommerce.inventory.service;
+package com.devlabs.ecommerce.inventory.product;
 
-import com.devlabs.ecommerce.inventory.model.Product;
-import com.devlabs.ecommerce.inventory.model.ProductCatalog;
-import com.devlabs.ecommerce.inventory.repository.ProductRepository;
 import com.devlabs.ecommerce.lib.exception.ResourceNotFoundException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -40,7 +37,7 @@ class ProductServiceTest {
 		// Given
 		final ProductService productService = new ProductService(productRepository);
 		Mockito.when(productRepository.findById(ProductCatalog.getProductWithId().getId()))
-		       .thenThrow(new ResourceNotFoundException("ResourceNotFoundException"));
+		       .thenReturn(Optional.empty());
 		
 		// When
 		final Throwable throwable = Assertions.catchThrowable(
