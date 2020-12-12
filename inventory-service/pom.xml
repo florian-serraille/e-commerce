@@ -28,11 +28,6 @@
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>${springdoc.openapi.ui}</version>
-		</dependency>
-		<dependency>
 			<groupId>com.devlabs.ecommerce</groupId>
 			<artifactId>e-commerce-lib</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
