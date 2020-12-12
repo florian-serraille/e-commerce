@@ -26,6 +26,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<springdoc.openapi.ui>1.5.1</springdoc.openapi.ui>
 	</properties>
 
 	<dependencies>
@@ -37,6 +38,17 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>${springdoc.openapi.ui}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
