@@ -20,7 +20,6 @@
 	<url>https://github.com/florian-serraille/e-commerce</url>
 
 	<modules>
-		<module>e-commerce-lib</module>
 		<module>inventory-service</module>
 	</modules>
 

@@ -1,6 +1,6 @@
 package com.devlabs.ecommerce.inventory.product;
 
-import com.devlabs.ecommerce.lib.exception.ResourceNotFoundException;
+import com.devlabs.ecommerce.inventory.exception.ResourceNotFoundException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

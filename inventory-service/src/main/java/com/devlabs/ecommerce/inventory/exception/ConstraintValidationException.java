@@ -1,4 +1,4 @@
-package com.devlabs.ecommerce.lib.exception;
+package com.devlabs.ecommerce.inventory.exception;
 
 import org.springframework.validation.FieldError;
 
