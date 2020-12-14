@@ -1,4 +1,4 @@
-package com.devlabs.ecommerce.lib.openApi;
+package com.devlabs.ecommerce.inventory.openApi;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;

@@ -1,7 +1,5 @@
 package com.devlabs.ecommerce.inventory.openApi;
 
-import com.devlabs.ecommerce.lib.openApi.ApiDocumentation;
-import com.devlabs.ecommerce.lib.openApi.OpenApiDescriptor;
 import io.swagger.v3.oas.models.OpenAPI;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;

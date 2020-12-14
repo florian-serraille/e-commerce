@@ -1,6 +1,6 @@
 package com.devlabs.ecommerce.inventory.product;
 
-import com.devlabs.ecommerce.lib.exception.ResourceNotFoundException;
+import com.devlabs.ecommerce.inventory.exception.ResourceNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
