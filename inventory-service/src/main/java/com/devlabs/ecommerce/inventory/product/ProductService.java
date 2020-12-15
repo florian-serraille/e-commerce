@@ -11,17 +11,21 @@ import java.util.List;
 class ProductService {
 	
 	private final ProductRepository productRepository;
+	private final ProductMapper productMapper;
 	
-	List<Product> findAll() {
-		return productRepository.findAll();
+	List<ApiProduct> findAll() {
+		return productMapper.toDTO(productRepository.findAll());
 	}
 	
-	Product findById(final Long productId) {
-		return productRepository.findById(productId).orElseThrow(
-				() -> new ResourceNotFoundException("Product not found for id: " + productId));
+	ApiProduct findById(final Long productId) {
+		return productMapper.toDTO(productRepository.findById(productId)
+		                                            .orElseThrow(() -> new ResourceNotFoundException(
+				                                            "Product not found for id: " + productId)));
 	}
 	
-	Product save(final Product product) {
-		return productRepository.save(product);
+	ApiProduct save(final ApiProduct apiProduct) {
+		
+		final Product product = productMapper.toModel(apiProduct);
+		return productMapper.toDTO(productRepository.save(product));
 	}
 }
