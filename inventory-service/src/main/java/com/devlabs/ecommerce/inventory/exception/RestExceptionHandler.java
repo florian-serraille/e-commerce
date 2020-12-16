@@ -25,8 +25,8 @@ public class RestExceptionHandler {
 	@ResponseStatus(code = INTERNAL_SERVER_ERROR)
 	public ResponseEntity<ApiError> problem(final Throwable e) {
 		
-		final String error = "Problem occurred: " + e.getMessage();
-		log.error(error, e);
+		final String error = "Problem occurred";
+		log.error(e.getMessage(), e);
 		
 		final ApiError apiError = new ApiError(INTERNAL_SERVER_ERROR, ZonedDateTime.now(), error,
 		                                       Collections.emptyList());
