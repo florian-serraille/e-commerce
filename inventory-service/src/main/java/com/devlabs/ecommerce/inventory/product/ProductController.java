@@ -1,7 +1,8 @@
 package com.devlabs.ecommerce.inventory.product;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,23 +13,27 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping(value = "/api/v1/products", produces = MediaType.APPLICATION_JSON_VALUE)
+@Tag(name = "Products management", description = "Create Retrieve Update and Delete products")
+@RequestMapping(value = "/api/v1/products", produces = APPLICATION_JSON_VALUE)
 class ProductController {
 	
 	private final ProductService productService;
 	
 	@GetMapping
-	ResponseEntity<List<Product>> findAllProducts() {
+	@Operation(summary = "List all products", description = "List all products available")
+	ResponseEntity<List<ApiProduct>> findAllProducts() {
 		return ResponseEntity.ok(productService.findAll());
 	}
 	
 	@GetMapping("/{productId}")
-	ResponseEntity<Product> findProductById(@PathVariable Long productId) {
+	@Operation(summary = "Find a product", description = "Find a product by his ID")
+	ResponseEntity<ApiProduct> findProductById(@PathVariable Long productId) {
 		return ResponseEntity.ok(productService.findById(productId));
 	}
 	
 	@PostMapping(consumes = APPLICATION_JSON_VALUE)
-	ResponseEntity<Product> saveProduct(@Valid @RequestBody Product product) {
+	@Operation(summary = "Register a product", description = "Register a product with all his fields")
+	ResponseEntity<ApiProduct> saveProduct(@Valid @RequestBody ApiProduct product) {
 		return ResponseEntity.ok(productService.save(product));
 	}
 }

@@ -1,9 +1,8 @@
 package com.devlabs.ecommerce.inventory.product;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,6 +16,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+public
 class Product {
 	
 	@Id
@@ -26,6 +26,5 @@ class Product {
 	private String name;
 	@NotNull
 	@PositiveOrZero
-	@JsonFormat(shape= JsonFormat.Shape.STRING)
 	private BigDecimal price;
 }
