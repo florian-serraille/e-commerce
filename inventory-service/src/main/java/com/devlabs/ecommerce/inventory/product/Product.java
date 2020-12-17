@@ -24,5 +24,5 @@ public class Product {
 	private String name;
 	@NotNull
 	@PositiveOrZero
-	private BigDecimal price;
+	private BigDecimal unitPrice;
 }
