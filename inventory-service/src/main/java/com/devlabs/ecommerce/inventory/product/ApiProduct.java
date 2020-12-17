@@ -23,6 +23,6 @@ public class ApiProduct {
 	@PositiveOrZero
 	@Schema(example = "10.0")
 	@JsonFormat(shape= JsonFormat.Shape.STRING)
-	private final BigDecimal price;
+	private final BigDecimal unitPrice;
 	
 }

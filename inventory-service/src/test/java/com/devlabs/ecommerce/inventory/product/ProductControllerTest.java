@@ -45,15 +45,15 @@ class ProductControllerTest {
 
 		       .andExpect(jsonPath("$[0].id", is(expectedProducts.get(0).getId().intValue())))
 		       .andExpect(jsonPath("$[0].name", is(expectedProducts.get(0).getName())))
-		       .andExpect(jsonPath("$[0].price", equalTo(expectedProducts.get(0).getPrice().toString())))
+		       .andExpect(jsonPath("$[0].unitPrice", equalTo(expectedProducts.get(0).getUnitPrice().toString())))
 
 		       .andExpect(jsonPath("$[1].id", is(expectedProducts.get(1).getId().intValue())))
 		       .andExpect(jsonPath("$[1].name", is(expectedProducts.get(1).getName())))
-		       .andExpect(jsonPath("$[1].price", equalTo(expectedProducts.get(1).getPrice().toString())))
+		       .andExpect(jsonPath("$[1].unitPrice", equalTo(expectedProducts.get(1).getUnitPrice().toString())))
 
 		       .andExpect(jsonPath("$[2].id", is(expectedProducts.get(2).getId().intValue())))
 		       .andExpect(jsonPath("$[2].name", is(expectedProducts.get(2).getName())))
-		       .andExpect(jsonPath("$[2].price", equalTo(expectedProducts.get(2).getPrice().toString())));
+		       .andExpect(jsonPath("$[2].unitPrice", equalTo(expectedProducts.get(2).getUnitPrice().toString())));
 
 	}
 
@@ -71,7 +71,7 @@ class ProductControllerTest {
 		actions.andExpect(status().isOk())
 		       .andExpect(jsonPath("$.id", is(expectedProduct.getId().intValue())))
 		       .andExpect(jsonPath("$.name", is(expectedProduct.getName())))
-		       .andExpect(jsonPath("$.price", equalTo(expectedProduct.getPrice().toString())));
+		       .andExpect(jsonPath("$.unitPrice", equalTo(expectedProduct.getUnitPrice().toString())));
 	}
 
 	@Test
@@ -105,7 +105,7 @@ class ProductControllerTest {
 		actions.andExpect(status().isOk())
 		       .andExpect(jsonPath("$.id", notNullValue()))
 		       .andExpect(jsonPath("$.name", is(expectedProduct.getName())))
-		       .andExpect(jsonPath("$.price", equalTo(expectedProduct.getPrice().toString())));
+		       .andExpect(jsonPath("$.unitPrice", equalTo(expectedProduct.getUnitPrice().toString())));
 	}
 
 	@Test

@@ -38,8 +38,8 @@ class ProductServiceTest {
 
 		// Then
 		Assertions.assertThat(actualProduct)
-		          .extracting(ApiProduct::getId, ApiProduct::getName, ApiProduct::getPrice)
-		          .contains(product.getId(), product.getName(), product.getPrice());
+		          .extracting(ApiProduct::getId, ApiProduct::getName, ApiProduct::getUnitPrice)
+		          .contains(product.getId(), product.getName(), product.getUnitPrice());
 	}
 
 	@Test
