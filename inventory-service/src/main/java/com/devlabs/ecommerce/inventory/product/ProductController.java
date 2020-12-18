@@ -14,7 +14,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @AllArgsConstructor
 @RestController
 @Tag(name = "Products management", description = "Create Retrieve Update and Delete products")
-@RequestMapping(value = "/api/v1/products", produces = APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/v1/inventory/products", produces = APPLICATION_JSON_VALUE)
 class ProductController {
 	
 	private final ProductService productService;
@@ -32,7 +32,7 @@ class ProductController {
 	}
 	
 	@PostMapping(consumes = APPLICATION_JSON_VALUE)
-	@Operation(summary = "Register a product", description = "Register a product with all his fields")
+	@Operation(summary = "Register or upadate a product", description = "Register a product with all his fields")
 	ResponseEntity<ApiProduct> saveProduct(@Valid @RequestBody ApiProduct product) {
 		return ResponseEntity.ok(productService.save(product));
 	}

@@ -9,7 +9,7 @@ import java.util.List;
 public interface ProductMapper {
 	
 	Product toModel(ApiProduct apiProduct);
-	List<Product> toModel(List<ApiProduct> apiProduct);
+	List<Product> toModel(List<ApiProduct> products);
 	
 	ApiProduct toDTO(Product product);
 	List<ApiProduct> toDTO(List<Product> product);

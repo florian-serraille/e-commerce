@@ -1,0 +1,5 @@
+- PUT PATCH
+- Mais recursos
+- Configurar volume
+- Configurar CI
+- ACTUATOR
