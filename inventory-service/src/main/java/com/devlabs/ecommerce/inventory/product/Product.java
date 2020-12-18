@@ -1,5 +1,7 @@
 package com.devlabs.ecommerce.inventory.product;
 
+import com.devlabs.ecommerce.inventory.brand.Brand;
+import com.devlabs.ecommerce.inventory.category.Category;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
@@ -22,7 +24,15 @@ public class Product {
 	private Long id;
 	@NotBlank
 	private String name;
+	@NotBlank
+	private String description;
 	@NotNull
 	@PositiveOrZero
 	private BigDecimal unitPrice;
+	@ManyToOne
+	@JoinColumn(name = "CATEGORY_ID")
+	private Category category;
+	@ManyToOne
+	@JoinColumn(name = "BRAND_ID")
+	private Brand brand;
 }
