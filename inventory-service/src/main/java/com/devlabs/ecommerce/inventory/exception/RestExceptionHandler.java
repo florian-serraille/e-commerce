@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import javax.validation.ConstraintViolationException;
 import java.time.ZonedDateTime;
 import java.util.Collections;
 
@@ -72,12 +73,28 @@ public class RestExceptionHandler {
 	}
 	
 	@ResponseStatus(code = BAD_REQUEST)
-	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public ResponseEntity<ApiError> handleValidationExceptions(MethodArgumentNotValidException ex) {
+	@ExceptionHandler({ ConstraintViolationException.class })
+	public ResponseEntity<ApiError> handleValidationExceptions(ConstraintViolationException ex) {
 		
-		final ApiError apiError = new ConstraintValidationException(
-				ex.getBindingResult().getFieldErrors()).toApiError();
+		final ApiError apiError = new ConstraintValidationException(ex.getConstraintViolations()).toApiError();
+		return new ResponseEntity<>(apiError, apiError.getStatus());
+	}
+	
+	@ResponseStatus(code = BAD_REQUEST)
+	@ExceptionHandler({ MethodArgumentNotValidException.class })
+	public ResponseEntity<ApiError> handleBindException(MethodArgumentNotValidException ex) {
 		
+		final ApiError apiError = new ConstraintValidationException(ex.getBindingResult().getFieldErrors())
+				                          .toApiError();
+		
+		return new ResponseEntity<>(apiError, apiError.getStatus());
+	}
+	
+	@ResponseStatus(code = CONFLICT)
+	@ExceptionHandler({ ResourceInUseException.class })
+	public ResponseEntity<ApiError> handleResourceInUseException(ResourceInUseException ex) {
+		
+		final ApiError apiError = ex.toApiError();
 		return new ResponseEntity<>(apiError, apiError.getStatus());
 	}
 }

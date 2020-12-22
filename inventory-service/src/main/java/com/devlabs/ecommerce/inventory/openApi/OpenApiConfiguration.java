@@ -22,7 +22,7 @@ public class OpenApiConfiguration {
 	@Bean
 	public GroupedOpenApi inventoryOpenApi() {
 		
-		final String[] paths = { "/api/v1/products/**" };
+		final String[] paths = { "/api/v1/inventory/**" };
 		return GroupedOpenApi.builder().group("inventory").pathsToMatch(paths)
 		                     .build();
 	}
