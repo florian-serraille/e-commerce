@@ -1,6 +1,8 @@
 package com.devlabs.ecommerce.inventory.product;
 
+import com.devlabs.ecommerce.inventory.brand.Brand;
 import com.devlabs.ecommerce.inventory.brand.BrandService;
+import com.devlabs.ecommerce.inventory.category.Category;
 import com.devlabs.ecommerce.inventory.category.CategoryService;
 import com.devlabs.ecommerce.inventory.exception.ResourceNotFoundException;
 import com.devlabs.ecommerce.inventory.validation.OnCreate;
@@ -58,12 +60,11 @@ class ProductService {
 	public ApiProduct update(final Long productId, final ApiProduct apiProduct) {
 		
 		final Product product = findModelById(productId);
-		
 		final Product updatedProduct = productMapper.updateModel(product, apiProduct);
-		updatedProduct.setBrand(brandService.findModelById(apiProduct.getBrand().getId()));
-		updatedProduct.setCategory(categoryService.findModelById(apiProduct.getCategory().getId()));
+		product.setBrand(brandService.findModelById(apiProduct.getBrand().getId()));
+		product.setCategory(categoryService.findModelById(apiProduct.getCategory().getId()));
 		
-		return productMapper.toDTO(updatedProduct);
+		return productMapper.toDTO(product);
 	}
 }
 
