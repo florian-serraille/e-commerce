@@ -1,10 +1,13 @@
 package com.devlabs.ecommerce.inventory.product;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -32,8 +35,29 @@ class ProductController {
 	}
 	
 	@PostMapping(consumes = APPLICATION_JSON_VALUE)
-	@Operation(summary = "Register or upadate a product", description = "Register a product with all his fields")
+	@Operation(summary = "Register a product", description = "Register a product with all his fields")
+	@ApiResponse(description = "Created", responseCode = "201")
 	ResponseEntity<ApiProduct> saveProduct(@Valid @RequestBody ApiProduct product) {
-		return ResponseEntity.ok(productService.save(product));
+		
+		final ApiProduct persistedProduct = productService.save(product);
+		final UriComponents uriComponents = UriComponentsBuilder.fromPath("/api/v1/inventory/products/{productId}")
+		                                                        .buildAndExpand(persistedProduct.getId());
+		
+		return ResponseEntity.created(uriComponents.toUri()).body(persistedProduct);
+	}
+	
+	@DeleteMapping("/{productId}")
+	@Operation(summary = "Delete a product", description = "Delete a product by his ID")
+	@ApiResponse(description = "No content", responseCode = "204")
+	ResponseEntity<ApiProduct> deleteProduct(@PathVariable Long productId) {
+		
+		productService.delete(productId);
+		return ResponseEntity.noContent().build();
+	}
+
+	@PutMapping("/{productId}")
+	@Operation(summary = "Update a product", description = "Delete a product by his ID")
+	ResponseEntity<ApiProduct> updateProduct(@PathVariable Long productId, @Valid @RequestBody ApiProduct apiProduct) {
+		return ResponseEntity.ok(productService.update(productId, apiProduct));
 	}
 }

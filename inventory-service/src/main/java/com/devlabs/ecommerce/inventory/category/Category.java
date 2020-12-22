@@ -16,9 +16,8 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@SequenceGenerator(name="CATEGORY_SEQ", sequenceName = "CATEGORY_SEQ", allocationSize = 1)
+@SequenceGenerator(name = "CATEGORY_SEQ", sequenceName = "CATEGORY_SEQ", allocationSize = 1)
 public class Category {
-	
 	
 	@Id
 	@GeneratedValue(strategy = SEQUENCE, generator = "CATEGORY_SEQ")
