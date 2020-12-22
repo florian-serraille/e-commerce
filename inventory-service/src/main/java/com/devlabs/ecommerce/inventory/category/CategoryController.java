@@ -2,6 +2,7 @@ package com.devlabs.ecommerce.inventory.category;
 
 import com.devlabs.ecommerce.inventory.product.ApiProduct;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +37,7 @@ public class CategoryController {
 	
 	@PostMapping(consumes = APPLICATION_JSON_VALUE)
 	@Operation(summary = "Register a category", description = "Register a category with all his fields")
+	@ApiResponse(description = "Created", responseCode = "201")
 	ResponseEntity<ApiCategory> saveProduct(@Valid @RequestBody ApiCategory apiBrand) {
 		
 		final ApiCategory persistedBrand = categoryService.save(apiBrand);
@@ -53,6 +55,7 @@ public class CategoryController {
 	
 	@DeleteMapping("/{categoryId}")
 	@Operation(summary = "Delete a category", description = "Delete a category by his ID")
+	@ApiResponse(description = "No content", responseCode = "204")
 	ResponseEntity<ApiProduct> deleteBrand(@PathVariable Long categoryId) {
 		
 		categoryService.delete(categoryId);
