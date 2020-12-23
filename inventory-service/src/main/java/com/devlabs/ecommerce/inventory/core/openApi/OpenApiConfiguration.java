@@ -1,4 +1,4 @@
-package com.devlabs.ecommerce.inventory.openApi;
+package com.devlabs.ecommerce.inventory.core.openApi;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import lombok.AllArgsConstructor;

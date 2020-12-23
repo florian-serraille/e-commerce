@@ -1,12 +1,10 @@
 package com.devlabs.ecommerce.inventory.product;
 
-import com.devlabs.ecommerce.inventory.brand.Brand;
 import com.devlabs.ecommerce.inventory.brand.BrandService;
-import com.devlabs.ecommerce.inventory.category.Category;
 import com.devlabs.ecommerce.inventory.category.CategoryService;
-import com.devlabs.ecommerce.inventory.exception.ResourceNotFoundException;
-import com.devlabs.ecommerce.inventory.validation.OnCreate;
-import com.devlabs.ecommerce.inventory.validation.OnUpdate;
+import com.devlabs.ecommerce.inventory.core.exception.ResourceNotFoundException;
+import com.devlabs.ecommerce.inventory.core.validation.OnCreate;
+import com.devlabs.ecommerce.inventory.core.validation.OnUpdate;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

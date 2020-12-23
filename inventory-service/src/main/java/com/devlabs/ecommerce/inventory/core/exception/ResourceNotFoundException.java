@@ -1,4 +1,4 @@
-package com.devlabs.ecommerce.inventory.exception;
+package com.devlabs.ecommerce.inventory.core.exception;
 
 import java.time.ZonedDateTime;
 import java.util.Collections;

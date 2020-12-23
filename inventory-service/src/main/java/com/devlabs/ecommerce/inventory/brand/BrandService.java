@@ -1,9 +1,9 @@
 package com.devlabs.ecommerce.inventory.brand;
 
-import com.devlabs.ecommerce.inventory.exception.ResourceInUseException;
-import com.devlabs.ecommerce.inventory.exception.ResourceNotFoundException;
-import com.devlabs.ecommerce.inventory.validation.OnCreate;
-import com.devlabs.ecommerce.inventory.validation.OnUpdate;
+import com.devlabs.ecommerce.inventory.core.exception.ResourceInUseException;
+import com.devlabs.ecommerce.inventory.core.exception.ResourceNotFoundException;
+import com.devlabs.ecommerce.inventory.core.validation.OnCreate;
+import com.devlabs.ecommerce.inventory.core.validation.OnUpdate;
 import lombok.AllArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
