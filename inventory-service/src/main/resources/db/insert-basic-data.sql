@@ -1,8 +1,14 @@
 insert into BRAND (ID, NAME)
 values ((SELECT nextval('BRAND_SEQ')), 'A brand');
 
+insert into BRAND (ID, NAME)
+values ((SELECT nextval('BRAND_SEQ')), 'Another brand');
+
 insert into CATEGORY (ID, NAME)
 values ((SELECT nextval('CATEGORY_SEQ')), 'A category');
+
+insert into CATEGORY (ID, NAME)
+values ((SELECT nextval('CATEGORY_SEQ')), 'Another category');
 
 insert into PRODUCT (ID, NAME, DESCRIPTION, UNIT_PRICE, BRAND_ID, CATEGORY_ID)
 values ((SELECT nextval('PRODUCT_SEQ')),

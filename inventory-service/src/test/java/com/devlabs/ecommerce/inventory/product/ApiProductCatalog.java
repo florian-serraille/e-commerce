@@ -1,39 +1,60 @@
 package com.devlabs.ecommerce.inventory.product;
 
-import com.devlabs.ecommerce.inventory.brand.ApiBrandCatalog;
-import com.devlabs.ecommerce.inventory.category.ApiCategoryCatalog;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.List;
+
+import static com.devlabs.ecommerce.inventory.brand.ApiBrandCatalog.getExistingBrandValid;
+import static com.devlabs.ecommerce.inventory.brand.ApiBrandCatalog.getUnknownBrand;
+import static com.devlabs.ecommerce.inventory.category.ApiCategoryCatalog.getExistingCategoryValid;
+import static com.devlabs.ecommerce.inventory.category.ApiCategoryCatalog.getUnknownCategory;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ApiProductCatalog {
 	
-	public static List<ApiProduct> getProductList() {
-		
-		ApiProduct p1 = new ApiProduct(1L, "Pen", "Pen", BigDecimal.valueOf(1), ApiBrandCatalog.getBrand(),
-		                               ApiCategoryCatalog.getCategory());
-		ApiProduct p2 = new ApiProduct(2L, "Book", "Book", BigDecimal.valueOf(10), ApiBrandCatalog.getBrand(),
-		                               ApiCategoryCatalog.getCategory());
-		ApiProduct p3 = new ApiProduct(3L, "BackPack", "BackPack", BigDecimal.valueOf(50), ApiBrandCatalog.getBrand(),
-		                               ApiCategoryCatalog.getCategory());
-		
-		return Arrays.asList(p1, p2, p3);
+	static ApiProduct getNewProductValid() {
+		return new ApiProduct(null, "A new product", "A new description", BigDecimal.TEN,
+		                      getExistingBrandValid(), getExistingCategoryValid());
 	}
 	
-	public static ApiProduct getProductWithId() {
-		return new ApiProduct(1L, "Pen", "Pen", BigDecimal.valueOf(1), ApiBrandCatalog.getBrand(),
-		                      ApiCategoryCatalog.getCategory());
+	static ApiProduct getExistingProductValid() {
+		return new ApiProduct(1L, "A existing product", "A existing description", new BigDecimal("1898.5"),
+		                      getExistingBrandValid(), getExistingCategoryValid());
 	}
 	
-	public static ApiProduct getProductWithoutId() {
-		return new ApiProduct(null, "Pen", "Pen", BigDecimal.valueOf(1), ApiBrandCatalog.getBrand(), ApiCategoryCatalog.getCategory());
+	static ApiProduct getNewProductNoBrand() {
+		return new ApiProduct(null, "A new product", "A new description", BigDecimal.TEN,
+		                      null, getExistingCategoryValid());
 	}
 	
-	public static ApiProduct getProductWithConstraintViolation() {
-		return new ApiProduct(null, "", null, BigDecimal.valueOf(-1), ApiBrandCatalog.getBrand(), ApiCategoryCatalog.getCategory());
+	static ApiProduct getNewProductNoCategory() {
+		return new ApiProduct(null, "A new product", "A new description", BigDecimal.TEN,
+		                      getExistingBrandValid(), null);
 	}
+	
+	static ApiProduct getNewProductCategoryNotExist() {
+		return new ApiProduct(null, "A new product", "A new description", BigDecimal.TEN,
+		                      getExistingBrandValid(), getUnknownCategory());
+	}
+	
+	static ApiProduct getNewProductBrandNotExist() {
+		return new ApiProduct(null, "A new product", "A new description", BigDecimal.TEN,
+		                      getUnknownBrand(), getExistingCategoryValid());
+	}
+	
+	static ApiProduct getUnknownProduct() {
+		return new ApiProduct(9L, "A new product", "A new description", BigDecimal.TEN,
+		                      getUnknownBrand(), getUnknownCategory());
+	}
+	
+	static ApiProduct getExistingBrandNotExist() {
+		return new ApiProduct(1L, "A new product", "A new description", BigDecimal.TEN,
+		                      getUnknownBrand(), getExistingCategoryValid());
+	}
+	
+	 static ApiProduct getExistingCategoryNotExist() {
+		 return new ApiProduct(1L, "A new product", "A new description", BigDecimal.TEN,
+		                       getExistingBrandValid(), getUnknownCategory());
+	 }
 }

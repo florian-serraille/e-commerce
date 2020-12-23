@@ -1,6 +1,5 @@
 package com.devlabs.ecommerce.inventory.category;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,7 +14,6 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @Data
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 @SequenceGenerator(name = "CATEGORY_SEQ", sequenceName = "CATEGORY_SEQ", allocationSize = 1)
 public class Category {
 	

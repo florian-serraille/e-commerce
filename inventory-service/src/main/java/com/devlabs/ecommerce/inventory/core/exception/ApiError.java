@@ -1,4 +1,4 @@
-package com.devlabs.ecommerce.inventory.exception;
+package com.devlabs.ecommerce.inventory.core.exception;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;

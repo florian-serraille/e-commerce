@@ -1,4 +1,4 @@
-package com.devlabs.ecommerce.inventory.exception;
+package com.devlabs.ecommerce.inventory.core.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;

@@ -12,12 +12,14 @@ import org.springframework.web.util.UriComponentsBuilder;
 import javax.validation.Valid;
 import java.util.List;
 
+import static com.devlabs.ecommerce.inventory.core.openApi.ApiConfig.Path.PRODUCTS;
+import static com.devlabs.ecommerce.inventory.core.openApi.ApiConfig.PathVariable.PRODUCT_ID;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @AllArgsConstructor
 @RestController
 @Tag(name = "Products management", description = "Create Retrieve Update and Delete products")
-@RequestMapping(value = "/api/v1/inventory/products", produces = APPLICATION_JSON_VALUE)
+@RequestMapping(value = PRODUCTS, produces = APPLICATION_JSON_VALUE)
 class ProductController {
 	
 	private final ProductService productService;
@@ -28,7 +30,7 @@ class ProductController {
 		return ResponseEntity.ok(productService.findAll());
 	}
 	
-	@GetMapping("/{productId}")
+	@GetMapping(PRODUCT_ID)
 	@Operation(summary = "Find a product", description = "Find a product by his ID")
 	ResponseEntity<ApiProduct> findProductById(@PathVariable Long productId) {
 		return ResponseEntity.ok(productService.findById(productId));
@@ -40,13 +42,13 @@ class ProductController {
 	ResponseEntity<ApiProduct> saveProduct(@Valid @RequestBody ApiProduct product) {
 		
 		final ApiProduct persistedProduct = productService.save(product);
-		final UriComponents uriComponents = UriComponentsBuilder.fromPath("/api/v1/inventory/products/{productId}")
+		final UriComponents uriComponents = UriComponentsBuilder.fromPath(PRODUCTS + PRODUCT_ID)
 		                                                        .buildAndExpand(persistedProduct.getId());
 		
 		return ResponseEntity.created(uriComponents.toUri()).body(persistedProduct);
 	}
 	
-	@DeleteMapping("/{productId}")
+	@DeleteMapping(PRODUCT_ID)
 	@Operation(summary = "Delete a product", description = "Delete a product by his ID")
 	@ApiResponse(description = "No content", responseCode = "204")
 	ResponseEntity<ApiProduct> deleteProduct(@PathVariable Long productId) {
@@ -55,7 +57,7 @@ class ProductController {
 		return ResponseEntity.noContent().build();
 	}
 
-	@PutMapping("/{productId}")
+	@PutMapping(PRODUCT_ID)
 	@Operation(summary = "Update a product", description = "Delete a product by his ID")
 	ResponseEntity<ApiProduct> updateProduct(@PathVariable Long productId, @Valid @RequestBody ApiProduct apiProduct) {
 		return ResponseEntity.ok(productService.update(productId, apiProduct));

@@ -1,12 +1,9 @@
-package com.devlabs.ecommerce.inventory.exception;
-
-import com.devlabs.ecommerce.inventory.brand.Brand;
+package com.devlabs.ecommerce.inventory.core.exception;
 
 import java.time.ZonedDateTime;
 import java.util.Collections;
 
 import static org.springframework.http.HttpStatus.CONFLICT;
-import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 public class ResourceInUseException extends ApiException {
 	
