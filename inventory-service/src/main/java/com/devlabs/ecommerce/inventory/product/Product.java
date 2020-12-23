@@ -2,22 +2,21 @@ package com.devlabs.ecommerce.inventory.product;
 
 import com.devlabs.ecommerce.inventory.brand.Brand;
 import com.devlabs.ecommerce.inventory.category.Category;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.*;
-import org.hibernate.annotations.Cascade;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 import java.math.BigDecimal;
 
-import static javax.persistence.GenerationType.*;
+import static javax.persistence.GenerationType.SEQUENCE;
 
 @Data
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
-@SequenceGenerator(name="PRODUCT_SEQ", sequenceName = "PRODUCT_SEQ", allocationSize = 1)
+@SequenceGenerator(name = "PRODUCT_SEQ", sequenceName = "PRODUCT_SEQ", allocationSize = 1)
 public class Product {
 	
 	@Id

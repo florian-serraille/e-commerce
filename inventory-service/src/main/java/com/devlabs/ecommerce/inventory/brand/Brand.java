@@ -1,8 +1,6 @@
 package com.devlabs.ecommerce.inventory.brand;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,8 +12,6 @@ import static javax.persistence.GenerationType.SEQUENCE;
 
 @Data
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @SequenceGenerator(name = "BRAND_SEQ", sequenceName = "BRAND_SEQ", allocationSize = 1)
 public class Brand {
 	
