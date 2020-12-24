@@ -1,6 +1,5 @@
 package com.devlabs.ecommerce.inventory.product;
 
-import com.devlabs.ecommerce.inventory.category.ApiCategory;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,11 +16,8 @@ import java.net.URI;
 
 import static com.devlabs.ecommerce.inventory.TestHelper.toJson;
 import static com.devlabs.ecommerce.inventory.TestHelper.toUri;
-import static com.devlabs.ecommerce.inventory.category.ApiCategoryCatalog.getUnknownCategory;
-import static com.devlabs.ecommerce.inventory.core.openApi.ApiConfig.Path.CATEGORIES;
-import static com.devlabs.ecommerce.inventory.core.openApi.ApiConfig.Path.PRODUCTS;
-import static com.devlabs.ecommerce.inventory.core.openApi.ApiConfig.PathVariable.CATEGORY_ID;
-import static com.devlabs.ecommerce.inventory.core.openApi.ApiConfig.PathVariable.PRODUCT_ID;
+import static com.devlabs.ecommerce.inventory.core.openapi.ApiConfig.Path.PRODUCTS;
+import static com.devlabs.ecommerce.inventory.core.openapi.ApiConfig.PathVariable.PRODUCT_ID;
 import static com.devlabs.ecommerce.inventory.product.ApiProductCatalog.*;
 import static org.hamcrest.Matchers.*;
 import static org.springframework.http.HttpHeaders.LOCATION;

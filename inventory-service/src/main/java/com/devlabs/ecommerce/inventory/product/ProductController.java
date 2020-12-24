@@ -12,8 +12,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 import javax.validation.Valid;
 import java.util.List;
 
-import static com.devlabs.ecommerce.inventory.core.openApi.ApiConfig.Path.PRODUCTS;
-import static com.devlabs.ecommerce.inventory.core.openApi.ApiConfig.PathVariable.PRODUCT_ID;
+import static com.devlabs.ecommerce.inventory.core.openapi.ApiConfig.Path.PRODUCTS;
+import static com.devlabs.ecommerce.inventory.core.openapi.ApiConfig.PathVariable.PRODUCT_ID;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @AllArgsConstructor
@@ -26,20 +26,20 @@ class ProductController {
 	
 	@GetMapping
 	@Operation(summary = "List all products", description = "List all products available")
-	ResponseEntity<List<ApiProduct>> findAllProducts() {
+	public ResponseEntity<List<ApiProduct>> findAllProducts() {
 		return ResponseEntity.ok(productService.findAll());
 	}
 	
 	@GetMapping(PRODUCT_ID)
 	@Operation(summary = "Find a product", description = "Find a product by his ID")
-	ResponseEntity<ApiProduct> findProductById(@PathVariable Long productId) {
+	public ResponseEntity<ApiProduct> findProductById(@PathVariable Long productId) {
 		return ResponseEntity.ok(productService.findById(productId));
 	}
 	
 	@PostMapping(consumes = APPLICATION_JSON_VALUE)
 	@Operation(summary = "Register a product", description = "Register a product with all his fields")
 	@ApiResponse(description = "Created", responseCode = "201")
-	ResponseEntity<ApiProduct> saveProduct(@Valid @RequestBody ApiProduct product) {
+	public ResponseEntity<ApiProduct> saveProduct(@Valid @RequestBody ApiProduct product) {
 		
 		final ApiProduct persistedProduct = productService.save(product);
 		final UriComponents uriComponents = UriComponentsBuilder.fromPath(PRODUCTS + PRODUCT_ID)
@@ -51,7 +51,7 @@ class ProductController {
 	@DeleteMapping(PRODUCT_ID)
 	@Operation(summary = "Delete a product", description = "Delete a product by his ID")
 	@ApiResponse(description = "No content", responseCode = "204")
-	ResponseEntity<ApiProduct> deleteProduct(@PathVariable Long productId) {
+	public ResponseEntity<ApiProduct> deleteProduct(@PathVariable Long productId) {
 		
 		productService.delete(productId);
 		return ResponseEntity.noContent().build();
@@ -59,7 +59,7 @@ class ProductController {
 
 	@PutMapping(PRODUCT_ID)
 	@Operation(summary = "Update a product", description = "Delete a product by his ID")
-	ResponseEntity<ApiProduct> updateProduct(@PathVariable Long productId, @Valid @RequestBody ApiProduct apiProduct) {
+	public ResponseEntity<ApiProduct> updateProduct(@PathVariable Long productId, @Valid @RequestBody ApiProduct apiProduct) {
 		return ResponseEntity.ok(productService.update(productId, apiProduct));
 	}
 }

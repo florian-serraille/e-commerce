@@ -1,4 +1,4 @@
-package com.devlabs.ecommerce.inventory.core.openApi;
+package com.devlabs.ecommerce.inventory.core.openapi;
 
 import io.swagger.v3.oas.models.info.Contact;
 import lombok.Getter;
