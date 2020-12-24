@@ -1,4 +1,4 @@
-package com.devlabs.ecommerce.inventory.core.openApi;
+package com.devlabs.ecommerce.inventory.core.openapi;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

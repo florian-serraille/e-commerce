@@ -1,7 +1,5 @@
 package com.devlabs.ecommerce.inventory.product;
 
-import com.devlabs.ecommerce.inventory.brand.Brand;
-import com.devlabs.ecommerce.inventory.category.Category;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;

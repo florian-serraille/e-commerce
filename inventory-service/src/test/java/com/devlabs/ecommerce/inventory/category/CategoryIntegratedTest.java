@@ -1,7 +1,6 @@
 package com.devlabs.ecommerce.inventory.category;
 
 import com.devlabs.ecommerce.inventory.TestHelper;
-import com.devlabs.ecommerce.inventory.brand.Brand;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,8 +17,8 @@ import java.net.URI;
 
 import static com.devlabs.ecommerce.inventory.TestHelper.toUri;
 import static com.devlabs.ecommerce.inventory.category.ApiCategoryCatalog.*;
-import static com.devlabs.ecommerce.inventory.core.openApi.ApiConfig.Path.CATEGORIES;
-import static com.devlabs.ecommerce.inventory.core.openApi.ApiConfig.PathVariable.CATEGORY_ID;
+import static com.devlabs.ecommerce.inventory.core.openapi.ApiConfig.Path.CATEGORIES;
+import static com.devlabs.ecommerce.inventory.core.openapi.ApiConfig.PathVariable.CATEGORY_ID;
 import static org.hamcrest.Matchers.*;
 import static org.springframework.http.HttpHeaders.LOCATION;
 import static org.springframework.http.HttpStatus.*;
@@ -29,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @AutoConfigureTestDatabase
-public class CategoryIntegratedTest {
+class CategoryIntegratedTest {
 	
 	@Autowired
 	private MockMvc mockMvc;
@@ -39,7 +38,7 @@ public class CategoryIntegratedTest {
 	
 	@Test
 	@DisplayName("List all categories, successful")
-	public void listAllCategories() throws Exception {
+	void listAllCategories() throws Exception {
 		
 		// Given
 		final URI performedURI = toUri(CATEGORIES);
@@ -60,7 +59,7 @@ public class CategoryIntegratedTest {
 	
 	@Test
 	@DisplayName("Find category by id, successful")
-	public void findCategoryById_Return200() throws Exception {
+	void findCategoryById_Return200() throws Exception {
 		
 		// Given
 		final Long expectedId = 1L;
@@ -77,7 +76,7 @@ public class CategoryIntegratedTest {
 	
 	@Test
 	@DisplayName("Find category by id, category not exist")
-	public void findCategoryById_Return404() throws Exception {
+	void findCategoryById_Return404() throws Exception {
 		
 		// Given
 		final ApiCategory category = getUnknownCategory();
@@ -98,7 +97,7 @@ public class CategoryIntegratedTest {
 	@Test
 	@DisplayName("Save category, successful")
 	@Transactional
-	public void saveCategory_ShouldReturn201() throws Exception {
+	void saveCategory_ShouldReturn201() throws Exception {
 		
 		// Given
 		final URI performedURI = toUri(CATEGORIES);
@@ -121,7 +120,7 @@ public class CategoryIntegratedTest {
 	
 	@Test
 	@DisplayName("Save category,  not null id property")
-	public void saveCategory_ShouldReturn400_idNotNull() throws Exception {
+	void saveCategory_ShouldReturn400_idNotNull() throws Exception {
 		
 		// Given
 		final URI performedURI = toUri(CATEGORIES);
@@ -145,7 +144,7 @@ public class CategoryIntegratedTest {
 	
 	@Test
 	@DisplayName("Save category, null name property")
-	public void saveCategory_ShouldReturn400_NameNull() throws Exception {
+	void saveCategory_ShouldReturn400_NameNull() throws Exception {
 		
 		// Given
 		final URI performedURI = toUri(CATEGORIES);
@@ -169,7 +168,7 @@ public class CategoryIntegratedTest {
 	
 	@Test
 	@DisplayName("Save category, multiple constraints violation")
-	public void saveCategory_ShouldReturn400_MultipleFieldsError() throws Exception {
+	void saveCategory_ShouldReturn400_MultipleFieldsError() throws Exception {
 		
 		// Given
 		final URI performedURI = toUri(CATEGORIES);
@@ -194,7 +193,7 @@ public class CategoryIntegratedTest {
 	@Test
 	@DisplayName("Update category, successful")
 	@Transactional
-	public void updateCategory_ShouldReturn200() throws Exception {
+	void updateCategory_ShouldReturn200() throws Exception {
 		
 		// Given
 		final ApiCategory modifiedCategory = ApiCategoryCatalog.getExistingCategoryValid();
@@ -218,7 +217,7 @@ public class CategoryIntegratedTest {
 	
 	@Test
 	@DisplayName("Update category, category not exist")
-	public void updateCategory_ShouldReturn404() throws Exception {
+	void updateCategory_ShouldReturn404() throws Exception {
 		
 		// Given
 		final ApiCategory category = getUnknownCategory();
@@ -241,7 +240,7 @@ public class CategoryIntegratedTest {
 	
 	@Test
 	@DisplayName("Update category, null name property")
-	public void updateCategory_ShouldReturn400_NoName() throws Exception {
+	void updateCategory_ShouldReturn400_NoName() throws Exception {
 		
 		// Given
 		final ApiCategory existingCategoryNoName = getExistingCategoryNoName();
@@ -265,7 +264,7 @@ public class CategoryIntegratedTest {
 	@Test
 	@DisplayName("Delete category, successful")
 	@Transactional
-	public void deleteCategoryById_Return204() throws Exception {
+	void deleteCategoryById_Return204() throws Exception {
 		
 		// Given
 		final URI performedURI = toUri(CATEGORIES, CATEGORY_ID, 2L);
@@ -281,7 +280,7 @@ public class CategoryIntegratedTest {
 	
 	@Test
 	@DisplayName("Delete category, category not exist")
-	public void deleteCategoryById_Return404() throws Exception {
+	void deleteCategoryById_Return404() throws Exception {
 		
 		// Given
 		final ApiCategory category = getUnknownCategory();
@@ -303,7 +302,7 @@ public class CategoryIntegratedTest {
 	
 	@Test
 	@DisplayName("Delete category, category in use")
-	public void deleteCategoryById_Return409() throws Exception {
+	void deleteCategoryById_Return409() throws Exception {
 		
 		// Given
 		final Long expectedId = 1L;

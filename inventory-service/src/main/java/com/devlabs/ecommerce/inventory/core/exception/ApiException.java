@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 public abstract class ApiException extends RuntimeException {
 	
 	
-	public ApiException(final String message) {
+	protected ApiException(final String message) {
 		super(message);
 	}
 	

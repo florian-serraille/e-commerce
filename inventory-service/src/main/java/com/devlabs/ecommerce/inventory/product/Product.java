@@ -3,7 +3,9 @@ package com.devlabs.ecommerce.inventory.product;
 import com.devlabs.ecommerce.inventory.brand.Brand;
 import com.devlabs.ecommerce.inventory.category.Category;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -13,7 +15,8 @@ import java.math.BigDecimal;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
-@Data
+@Getter
+@Setter
 @Entity
 @NoArgsConstructor
 @SequenceGenerator(name = "PRODUCT_SEQ", sequenceName = "PRODUCT_SEQ", allocationSize = 1)
