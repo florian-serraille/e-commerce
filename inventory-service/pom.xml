@@ -19,6 +19,7 @@
 		<maven.complier.plugin>3.5.1</maven.complier.plugin>
 		<mapstruct.version>1.4.1.Final</mapstruct.version>
 		<sonar.projectKey>florian-serraille_e-commerce_inventory</sonar.projectKey>
+		<sonar.coverage.jacoco.xmlReportPaths>${basedir}/../${aggregate.report.dir}</sonar.coverage.jacoco.xmlReportPaths>
 	</properties>
 
 	<dependencies>
