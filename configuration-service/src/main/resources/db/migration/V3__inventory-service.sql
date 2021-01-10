@@ -1,0 +1,2 @@
+INSERT INTO PROPERTIES VALUES (6, 'inventory-service', 'default', 'master', 'spring.datasource.username', 'inventory-user');
+INSERT INTO PROPERTIES VALUES (7, 'inventory-service', 'default', 'master', 'spring.datasource.password', 'inventory-password');
