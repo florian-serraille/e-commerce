@@ -13,6 +13,10 @@
 	<name>configuration-service</name>
 	<description>Configuration service for e-commerce project</description>
 
+	<properties>
+		<sonar.projectKey>florian-serraille_e-commerce_config</sonar.projectKey>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
